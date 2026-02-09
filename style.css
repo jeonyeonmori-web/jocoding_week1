@@ -1,0 +1,67 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #e6ffe6; /* Light green background */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #333;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 100, 0, 0.1); /* Greenish shadow */
+    text-align: center;
+    width: 90%;
+    max-width: 500px;
+}
+
+h1 {
+    color: #28a745; /* Medium green heading */
+    margin-bottom: 30px;
+    font-size: 2.5em;
+}
+
+.input-section {
+    margin-bottom: 40px;
+}
+
+label {
+    display: block;
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    color: #4CAF50; /* Slightly darker green for label */
+}
+
+input[type="date"] {
+    padding: 12px 15px;
+    font-size: 1.1em;
+    border: 2px solid #4CAF50; /* Green border */
+    border-radius: 8px;
+    outline: none;
+    cursor: pointer;
+    background-color: #f0fff0; /* Very light green input background */
+    color: #333;
+    width: calc(100% - 34px); /* Adjust for padding and border */
+    max-width: 250px;
+    transition: border-color 0.3s ease;
+}
+
+input[type="date"]:focus {
+    border-color: #28a745; /* Darker green on focus */
+}
+
+.dday-result {
+    margin-top: 30px;
+}
+
+#dday-display {
+    font-size: 4.5em; /* Large number */
+    font-weight: bold;
+    color: #008000; /* Dark green for the D-Day number */
+    display: block; /* Ensures it takes full width */
+    min-height: 1.5em; /* Prevent layout shift before number appears */
+}
