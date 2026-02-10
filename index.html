@@ -10,45 +10,53 @@
     <div class="theme-toggle-container">
         <button id="theme-toggle">🌙</button>
     </div>
-    <div class="container">
-        <h1>D-Day 계산기</h1>
-        <div class="input-section">
-            <label for="target-date">날짜를 선택하세요:</label>
-            <input type="date" id="target-date">
+
+    <div class="page-wrapper">
+        <div class="main-content">
+            <div class="container">
+                <h1>D-Day 계산기</h1>
+                <div class="input-section">
+                    <label for="target-date">날짜를 선택하세요:</label>
+                    <input type="date" id="target-date">
+                </div>
+                <div class="dday-result">
+                    <span id="dday-display">날짜를 선택해 주세요</span>
+                </div>
+            </div>
+
+            <!-- Affiliate Inquiry Form Section -->
+            <div class="container form-container">
+                <h1>제휴 문의</h1>
+                <form id="contact-form" action="https://formspree.io/f/xvzbgejq" method="POST">
+                    <p>
+                        <label for="name">이름:</label>
+                        <input type="text" id="name" name="name" required>
+                    </p>
+                    <p>
+                        <label for="email">이메일:</label>
+                        <input type="email" id="email" name="email" required>
+                    </p>
+                    <p>
+                        <label for="company">회사명 (선택 사항):</label>
+                        <input type="text" id="company" name="company">
+                    </p>
+                    <p>
+                        <label for="message">문의 내용:</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </p>
+                    <p>
+                        <button type="submit">문의 제출</button>
+                    </p>
+                    <p id="form-status" class="hidden"></p>
+                </form>
+            </div>
         </div>
-        <div class="dday-result">
-            <span id="dday-display">날짜를 선택해 주세요</span>
+
+        <div class="sidebar-comments">
+            <div id="disqus_thread"></div>
         </div>
     </div>
 
-    <!-- Affiliate Inquiry Form Section -->
-    <div class="container form-container">
-        <h1>제휴 문의</h1>
-        <form id="contact-form" action="https://formspree.io/f/xvzbgejq" method="POST">
-            <p>
-                <label for="name">이름:</label>
-                <input type="text" id="name" name="name" required>
-            </p>
-            <p>
-                <label for="email">이메일:</label>
-                <input type="email" id="email" name="email" required>
-            </p>
-            <p>
-                <label for="company">회사명 (선택 사항):</label>
-                <input type="text" id="company" name="company">
-            </p>
-            <p>
-                <label for="message">문의 내용:</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
-            </p>
-            <p>
-                <button type="submit">문의 제출</button>
-            </p>
-            <p id="form-status" class="hidden"></p>
-        </form>
-    </div>
-
-    <div id="disqus_thread"></div>
     <script>
         var disqus_config = function () {
         this.page.url = "https://YOUR_GITHUB_USERNAME.github.io/YOUR_REPOSITORY_NAME/";  // Replace with your page's canonical URL

@@ -1,14 +1,14 @@
 body {
-    display: flex;
+    display: flex; /* Changed to flex to center the page-wrapper if needed */
     justify-content: center;
-    align-items: center;
+    align-items: flex-start; /* Align items to the top to prevent stretching */
     min-height: 100vh;
     margin: 0;
     background-color: #e6ffe6; /* Light green background */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #333;
     transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for theme change */
-    flex-direction: column; /* Allow content to stack vertically */
+    flex-direction: column; /* Keep column for small screens, but page-wrapper will handle main layout */
 }
 
 /* Dark Mode styles */
@@ -216,4 +216,55 @@ input[type="date"]:focus {
 #form-status.error {
     background-color: #ffebee; /* Light red */
     color: #f44336; /* Red */
+}
+
+/* New layout for main content and sidebar */
+.page-wrapper {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    justify-content: center;
+    gap: 20px; /* Space between main content and sidebar */
+    width: 100%;
+    max-width: 1200px; /* Max width for the whole page content */
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.main-content {
+    flex: 2; /* Takes 2 parts of available space */
+    min-width: 300px; /* Minimum width for main content */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items within main content */
+}
+
+.sidebar-comments {
+    flex: 1; /* Takes 1 part of available space */
+    min-width: 300px; /* Minimum width for sidebar */
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .page-wrapper {
+        flex-direction: column; /* Stack main content and sidebar vertically */
+        align-items: center;
+        padding: 10px;
+    }
+
+    .main-content,
+    .sidebar-comments {
+        flex: none; /* Remove flex sizing */
+        width: 100%; /* Take full width */
+        max-width: 500px; /* Limit width for better readability on smaller screens */
+        margin-bottom: 20px; /* Space between stacked elements */
+    }
+
+    .sidebar-comments {
+        margin-bottom: 0; /* No margin after the last element */
+    }
 }
