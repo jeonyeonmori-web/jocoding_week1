@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>동물상 테스트</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button id="theme-toggle">🌙</button>
+    </div>
+
+    <div class="container animal-test-container">
+        <h1>강아지/고양이상 테스트 (이미지 업로드)</h1>
+        <p>사진 파일을 업로드하여 당신이 강아지상인지 고양이상인지 확인해보세요!</p>
+
+        <input type="file" id="imageUpload" accept="image/*">
+        <div id="image-display-container">
+            <img id="uploadedImage" src="#" alt="업로드된 이미지" style="display:none;">
+            <canvas id="imageCanvas" style="display:none;"></canvas>
+        </div>
+        <button type="button" id="predictButton" class="predict-button" disabled>예측하기</button>
+        <div id="label-container"></div>
+    </div>
+
+    <script type="text/javascript">
+        const URL = "https://teachablemachine.withgoogle.com/models/wyspbsAN1/";
+        let model, maxPredictions;
+
+        const imageUpload = document.getElementById('imageUpload');
+        const uploadedImage = document.getElementById('uploadedImage');
+        const imageCanvas = document.getElementById('imageCanvas');
+        const predictButton = document.getElementById('predictButton');
+        const labelContainer = document.getElementById('label-container');
+        const ctx = imageCanvas.getContext('2d');
+
+        async function init() {
+            const modelURL = URL + "model.json";
+            const metadataURL = URL + "metadata.json";
+
+            try {
+                model = await tmImage.load(modelURL, metadataURL);
+                maxPredictions = model.getTotalClasses();
+
+                labelContainer.innerHTML = '';
+                for (let i = 0; i < maxPredictions; i++) {
+                    labelContainer.appendChild(document.createElement("div"));
+                }
+                // Enable predict button if an image is already selected
+                if (uploadedImage.style.display !== 'none') {
+                    predictButton.disabled = false;
+                }
+
+            } catch (error) {
+                console.error("Error loading Teachable Machine model:", error);
+                labelContainer.innerHTML = '<div style="color: red;">모델 로드에 실패했습니다. 브라우저 콘솔을 확인해주세요.</div>';
+            }
+        }
+
+        imageUpload.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    uploadedImage.src = e.target.result;
+                    uploadedImage.style.display = 'block';
+                    uploadedImage.onload = () => {
+                        // Resize image to fit model input (e.g., 224x224)
+                        const size = 224; // Teachable Machine models typically expect 224x224
+                        imageCanvas.width = size;
+                        imageCanvas.height = size;
+                        ctx.drawImage(uploadedImage, 0, 0, size, size);
+                        predictButton.disabled = false; // Enable button once image is loaded
+                        // Clear previous predictions
+                        for (let i = 0; i < maxPredictions; i++) {
+                            if (labelContainer.childNodes[i]) {
+                                labelContainer.childNodes[i].innerHTML = "";
+                            }
+                        }
+                    };
+                };
+                reader.readAsDataURL(file);
+            } else {
+                uploadedImage.style.display = 'none';
+                uploadedImage.src = '#';
+                predictButton.disabled = true;
+                labelContainer.innerHTML = ''; // Clear labels
+            }
+        });
+
+        predictButton.addEventListener('click', predict);
+
+        async function predict() {
+            if (!model || uploadedImage.style.display === 'none') {
+                console.warn("Model not loaded or no image selected.");
+                return;
+            }
+
+            // Predict using the canvas containing the resized image
+            const prediction = await model.predict(imageCanvas);
+
+            for (let i = 0; i < maxPredictions; i++) {
+                const classPrediction =
+                    prediction[i].className + ": " + (prediction[i].probability * 100).toFixed(2) + "%";
+                if (labelContainer.childNodes[i]) {
+                    labelContainer.childNodes[i].innerHTML = classPrediction;
+                }
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>

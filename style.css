@@ -173,9 +173,9 @@ input[type="date"]:focus {
     margin-top: 5px;
 }
 
-.form-container input[type="text"]:focus,
-.form-container input[type="email"]:focus,
-.form-container textarea:focus {
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
     border-color: #3f51b5;
     outline: none;
     box-shadow: 0 0 5px rgba(63, 81, 181, 0.3);
@@ -268,3 +268,138 @@ input[type="date"]:focus {
         margin-bottom: 0; /* No margin after the last element */
     }
 }
+/* Styles for the animal test link container in index.html */
+.animal-test-link-container {
+    margin-top: 20px;
+    padding: 30px;
+    background-color: #f0f8ff; /* Light blue background */
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.animal-test-link-container h2 {
+    color: #0056b3; /* Darker blue heading */
+    margin-bottom: 15px;
+    font-size: 1.8em;
+}
+
+.animal-test-link-container p {
+    font-size: 1.1em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.test-button {
+    display: inline-block;
+    background-color: #007bff; /* Blue button */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.test-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Styles for animal_test.html page */
+.animal-test-container {
+    margin-top: 20px;
+    padding: 30px;
+    background-color: #f8f8f8;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.animal-test-container h1 {
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-size: 2.2em;
+}
+
+.animal-test-container p {
+    font-size: 1.1em;
+    color: #555;
+    margin-bottom: 25px;
+}
+
+/* Removed #webcam-container */
+
+#imageUpload {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+#image-display-container {
+    margin-bottom: 20px;
+    border: 2px dashed #ccc;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 250px; /* To give it some space even when no image */
+    width: 100%;
+    max-width: 250px;
+    border-radius: 10px;
+}
+
+#uploadedImage {
+    max-width: 100%;
+    max-height: 224px; /* Limit height to typical model input size */
+    border-radius: 8px;
+    object-fit: contain;
+}
+
+#imageCanvas {
+    border: 1px solid #eee; /* For debugging or if direct canvas is shown */
+    border-radius: 8px;
+}
+
+
+#label-container {
+    margin-top: 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    min-height: 50px; /* Prevent layout shift */
+}
+
+#label-container div {
+    margin-bottom: 5px;
+}
+
+.predict-button {
+    background-color: #28a745; /* Green */
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    margin: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.predict-button:hover {
+    background-color: #218838; /* Darker green */
+}
+
+.predict-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Removed .start-button, .stop-button as they are no longer used */
