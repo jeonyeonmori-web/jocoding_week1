@@ -257,6 +257,7 @@ textarea:focus {
     max-width: 1200px; /* Max width for the whole page content */
     padding: 20px;
     box-sizing: border-box;
+    margin: 0 auto; /* Center the page wrapper horizontally */
 }
 
 .main-content {
