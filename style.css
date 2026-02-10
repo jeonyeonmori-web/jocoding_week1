@@ -1,65 +1,80 @@
+:root {
+    --primary-color: #28a745;
+    --primary-dark: #218838;
+    --secondary-color: #3f51b5;
+    --text-color: #333;
+    --bg-color: #e6ffe6;
+    --container-bg: #ffffff;
+    --shadow-color: rgba(0, 100, 0, 0.1);
+}
+
 body {
-    display: flex; /* Changed to flex to center the page-wrapper if needed */
-    justify-content: center;
-    align-items: flex-start; /* Align items to the top to prevent stretching */
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
     margin: 0;
-    background-color: #e6ffe6; /* Light green background */
+    background-color: var(--bg-color);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: #333;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for theme change */
-    flex-direction: column; /* Keep column for small screens, but page-wrapper will handle main layout */
+    color: var(--text-color);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Dark Mode styles */
 body.dark-mode {
-    background-color: #282c34; /* Dark background */
-    color: #e0e0e0; /* Light text */
+    --primary-color: #72ef9e;
+    --primary-dark: #a3f7bf;
+    --secondary-color: #8c9eff;
+    --text-color: #e0e0e0;
+    --bg-color: #282c34;
+    --container-bg: #3a3f4a;
+    --shadow-color: rgba(0, 0, 0, 0.3);
 }
 
-body.dark-mode .container {
-    background-color: #3a3f4a; /* Darker container */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Darker shadow */
-}
-
-body.dark-mode h1 {
-    color: #72ef9e; /* Lighter green for dark mode heading */
-}
-
-body.dark-mode label {
-    color: #88d49e; /* Lighter green for dark mode label */
-}
-
-body.dark-mode input[type="date"] {
-    background-color: #4a4f59; /* Darker input background */
-    color: #e0e0e0;
-    border-color: #72ef9e; /* Lighter green border */
-}
-
-body.dark-mode input[type="date"]:focus {
-    border-color: #a3f7bf; /* Even lighter green on focus */
-}
-
-body.dark-mode #dday-display {
-    color: #a3f7bf; /* Lighter green for dark mode D-Day number */
-}
-
-/* Theme Toggle Button Styles */
-.theme-toggle-container {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+/* --- Header and Navigation --- */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 30px;
+    background-color: var(--container-bg);
+    box-shadow: 0 2px 5px var(--shadow-color);
+    width: 100%;
+    box-sizing: border-box;
+    position: sticky;
+    top: 0;
     z-index: 1000;
-    display: flex; /* Use flexbox for button alignment */
-    align-items: center; /* Vertically align items */
-    gap: 10px; /* Space between buttons */
+}
+
+.nav-logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.navigation ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: bold;
+    transition: color 0.2s ease;
+}
+
+.navigation a:hover {
+    color: var(--primary-color);
 }
 
 #theme-toggle {
-    background-color: #4CAF50;
+    background-color: var(--secondary-color);
     color: white;
     border: none;
-    padding: 10px 15px;
+    padding: 8px 12px;
     border-radius: 5px;
     font-size: 1.2em;
     cursor: pointer;
@@ -67,261 +82,70 @@ body.dark-mode #dday-display {
     transition: background-color 0.3s ease;
 }
 
-#theme-toggle:hover {
-    background-color: #45a049;
+/* --- Main Content Wrappers --- */
+main {
+    flex: 1;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
-body.dark-mode #theme-toggle {
-    background-color: #72ef9e;
-    color: #282c34;
+.page-wrapper-single {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
 
-body.dark-mode #theme-toggle:hover {
-    background-color: #a3f7bf;
+/* --- Landing Page Specific Styles --- */
+.hero {
+    text-align: center;
+    margin-bottom: 40px;
+}
+.hero h1 {
+    font-size: 2.8em;
+    color: var(--primary-color);
+}
+.tool-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.tool-card {
+    background: var(--container-bg);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    text-align: center;
+}
+.tool-card h2 {
+    color: var(--secondary-color);
 }
 
-.nav-button {
-    background-color: #6c757d; /* Grey button */
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    font-size: 1.0em;
-    cursor: pointer;
-    text-decoration: none; /* Remove underline for links */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    transition: background-color 0.3s ease;
-}
-
-.nav-button:hover {
-    background-color: #5a6268; /* Darker grey on hover */
-}
-
-body.dark-mode .nav-button {
-    background-color: #adb5bd;
-    color: #282c34;
-}
-
-body.dark-mode .nav-button:hover {
-    background-color: #93989f;
-}
-
-
+/* --- General Container and Buttons --- */
 .container {
-    background-color: #ffffff;
+    background-color: var(--container-bg);
     padding: 40px;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 100, 0, 0.1); /* Greenish shadow */
+    box-shadow: 0 10px 30px var(--shadow-color);
     text-align: center;
-    width: 90%;
-    max-width: 500px;
-    margin-bottom: 20px; /* Add margin to separate containers */
+    width: 100%;
+    max-width: 600px;
+    margin-bottom: 20px;
 }
 
 h1 {
-    color: #28a745; /* Medium green heading */
+    color: var(--primary-color);
     margin-bottom: 30px;
     font-size: 2.5em;
 }
 
-.input-section {
-    margin-bottom: 40px;
-}
-
-label {
-    display: block;
-    font-size: 1.2em;
-    margin-bottom: 15px;
-    color: #4CAF50; /* Slightly darker green for label */
-}
-
-input[type="date"] {
-    padding: 12px 15px;
-    font-size: 1.1em;
-    border: 2px solid #4CAF50; /* Green border */
-    border-radius: 8px;
-    outline: none;
-    cursor: pointer;
-    background-color: #f0fff0; /* Very light green input background */
-    color: #333;
-    width: calc(100% - 34px); /* Adjust for padding and border */
-    max-width: 250px;
-    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
-}
-
-input[type="date"]:focus {
-    border-color: #28a745; /* Darker green on focus */
-}
-
-.dday-result {
-    margin-top: 30px;
-}
-
-#dday-display {
-    font-size: 4.5em; /* Large number */
-    font-weight: bold;
-    color: #008000; /* Dark green for the D-Day number */
-    display: block; /* Ensures it takes full width */
-    min-height: 1.5em; /* Prevent layout shift before number appears */
-}
-
-/* Form-specific styles */
-.form-container {
-    padding: 30px 40px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
-}
-
-.form-container h1 {
-    color: #3f51b5; /* Deep purple */
-    margin-bottom: 25px;
-    font-size: 2em;
-}
-
-.form-container form p {
-    margin-bottom: 15px;
-    text-align: left;
-}
-
-.form-container label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold;
-    color: #555;
-}
-
-input[type="text"],
-input[type="email"],
-textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 1em;
-    box-sizing: border-box;
-    margin-top: 5px;
-}
-
-input[type="text"]:focus,
-input[type="email"]:focus,
-textarea:focus {
-    border-color: #3f51b5;
-    outline: none;
-    box-shadow: 0 0 5px rgba(63, 81, 181, 0.3);
-}
-
-.form-container button[type="submit"] {
-    background-color: #3f51b5; /* Deep purple */
-    color: white;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1.1em;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 15px;
-}
-
-.form-container button[type="submit"]:hover {
-    background-color: #303f9f; /* Darker purple on hover */
-}
-
-.hidden {
-    display: none;
-}
-
-#form-status {
-    margin-top: 20px;
-    padding: 10px;
-    border-radius: 5px;
-    font-weight: bold;
-}
-
-#form-status.success {
-    background-color: #e8f5e9; /* Light green */
-    color: #4CAF50; /* Green */
-}
-
-#form-status.error {
-    background-color: #ffebee; /* Light red */
-    color: #f44336; /* Red */
-}
-
-/* New layout for main content and sidebar */
-.page-wrapper {
-    display: flex;
-    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
-    justify-content: center;
-    gap: 20px; /* Space between main content and sidebar */
-    width: 100%;
-    max-width: 1200px; /* Max width for the whole page content */
-    padding: 20px;
-    box-sizing: border-box;
-    margin: 0 auto; /* Center the page wrapper horizontally */
-}
-
-.main-content {
-    flex: 2; /* Takes 2 parts of available space */
-    min-width: 300px; /* Minimum width for main content */
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Center items within main content */
-}
-
-.sidebar-comments {
-    flex: 1; /* Takes 1 part of available space */
-    min-width: 300px; /* Minimum width for sidebar */
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .page-wrapper {
-        flex-direction: column; /* Stack main content and sidebar vertically */
-        align-items: center;
-        padding: 10px;
-    }
-
-    .main-content,
-    .sidebar-comments {
-        flex: none; /* Remove flex sizing */
-        width: 100%; /* Take full width */
-        max-width: 500px; /* Limit width for better readability on smaller screens */
-        margin-bottom: 20px; /* Space between stacked elements */
-    }
-
-    .sidebar-comments {
-        margin-bottom: 0; /* No margin after the last element */
-    }
-}
-/* Styles for the animal test link container in index.html */
-.animal-test-link-container {
-    margin-top: 20px;
-    padding: 30px;
-    background-color: #f0f8ff; /* Light blue background */
-    border-radius: 15px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-}
-
-.animal-test-link-container h2 {
-    color: #0056b3; /* Darker blue heading */
-    margin-bottom: 15px;
-    font-size: 1.8em;
-}
-
-.animal-test-link-container p {
-    font-size: 1.1em;
-    color: #333;
-    margin-bottom: 20px;
-}
-
 .test-button {
     display: inline-block;
-    background-color: #007bff; /* Blue button */
+    background-color: var(--secondary-color);
     color: white;
     padding: 12px 25px;
     border: none;
@@ -331,106 +155,138 @@ textarea:focus {
     text-decoration: none;
     transition: background-color 0.3s ease;
 }
-
 .test-button:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    opacity: 0.9;
 }
 
-/* Styles for animal_test.html page */
-.animal-test-container {
-    margin-top: 20px;
-    padding: 30px;
-    background-color: #f8f8f8;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    width: 90%;
-    max-width: 600px;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 auto; /* Center the container horizontally */
-}
 
-.animal-test-container h1 {
-    color: #2c3e50;
+/* --- D-Day Calculator Specific Styles --- */
+.input-section {
+    margin-bottom: 40px;
+}
+label {
+    display: block;
+    font-size: 1.2em;
     margin-bottom: 15px;
-    font-size: 2.2em;
+    color: var(--primary-color);
 }
-
-.animal-test-container p {
+input[type="date"] {
+    padding: 12px 15px;
     font-size: 1.1em;
-    color: #555;
-    margin-bottom: 25px;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+}
+#dday-display {
+    font-size: 4.5em;
+    font-weight: bold;
+    color: var(--primary-dark);
 }
 
-/* Removed #webcam-container */
 
-#imageUpload {
-    margin-bottom: 20px;
+/* --- Contact Form Specific Styles --- */
+.form-container form p {
+    margin-bottom: 15px;
+    text-align: left;
+}
+.form-container label {
+    font-size: 1em;
+    color: var(--text-color);
+}
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container textarea {
+    width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    background-color: #f9f9f9;
+    font-size: 1em;
+    box-sizing: border-box;
 }
+.form-container button[type="submit"] {
+    background-color: var(--secondary-color);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+#form-status {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+#form-status.success { background-color: #e8f5e9; color: #4CAF50; }
+#form-status.error { background-color: #ffebee; color: #f44336; }
 
+
+/* --- Animal Test Specific Styles --- */
+#imageUpload {
+    margin-bottom: 20px;
+}
 #image-display-container {
     margin-bottom: 20px;
     border: 2px dashed #ccc;
     padding: 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 250px; /* To give it some space even when no image */
+    min-height: 250px;
     width: 100%;
     max-width: 250px;
     border-radius: 10px;
 }
-
 #uploadedImage {
     max-width: 100%;
-    max-height: 224px; /* Limit height to typical model input size */
-    border-radius: 8px;
-    object-fit: contain;
+    max-height: 224px;
 }
-
-#imageCanvas {
-    border: 1px solid #eee; /* For debugging or if direct canvas is shown */
-    border-radius: 8px;
-}
-
-
 #label-container {
     margin-top: 15px;
     font-size: 1.2em;
     font-weight: bold;
-    color: #333;
-    min-height: 50px; /* Prevent layout shift */
+    min-height: 50px;
 }
-
-#label-container div {
-    margin-bottom: 5px;
-}
-
 .predict-button {
-    background-color: #28a745; /* Green */
+    background-color: var(--primary-color);
     color: white;
     padding: 12px 25px;
     border: none;
     border-radius: 8px;
     font-size: 1.1em;
     cursor: pointer;
-    margin: 10px;
-    transition: background-color 0.3s ease;
+}
+.predict-button:disabled { background-color: #cccccc; cursor: not-allowed; }
+
+
+/* --- Disqus/Comments Section --- */
+.sidebar-comments {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: var(--container-bg);
+    border-radius: 15px;
 }
 
-.predict-button:hover {
-    background-color: #218838; /* Darker green */
+
+/* --- Footer --- */
+.site-footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--container-bg);
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: auto;
 }
 
-.predict-button:disabled {
-    background-color: #cccccc;
-    cursor: not-allowed;
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .site-header {
+        flex-direction: column;
+        gap: 10px;
+        position: static;
+    }
+    .navigation ul {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
 }
-
-/* Removed .start-button, .stop-button as they are no longer used */

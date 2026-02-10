@@ -1,85 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D-Day Calculator</title>
+    <title>Jocoding's Web Tools</title>
+    <meta name="description" content="A collection of fun and useful web tools, including a D-Day calculator and an animal face test.">
+    <link rel="stylesheet" href="style.css">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3480769851044573" crossorigin="anonymous"></script>
     <meta name="google-adsense-account" content="ca-pub-3480769851044573">
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="theme-toggle-container">
-        <a href="animal_test.html" class="nav-button">동물상 테스트</a>
+    <header class="site-header">
+        <nav class="navigation">
+            <a href="index.html" class="nav-logo">Jocoding's Tools</a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dday.html">D-Day Calculator</a></li>
+                <li><a href="animal_test.html">Animal Face Test</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
         <button id="theme-toggle">🌙</button>
-    </div>
+    </header>
 
-    <div class="page-wrapper">
-        <div class="main-content">
-            <div class="container">
-                <h1>D-Day 계산기</h1>
-                <div class="input-section">
-                    <label for="target-date">날짜를 선택하세요:</label>
-                    <input type="date" id="target-date">
-                </div>
-                <div class="dday-result">
-                    <span id="dday-display">날짜를 선택해 주세요</span>
-                </div>
+    <main class="page-wrapper">
+        <section class="hero">
+            <h1>Welcome to Jocoding's Web Tools</h1>
+            <p>A collection of fun and useful tools built for you. Explore our tools below!</p>
+        </section>
+
+        <section class="tool-list">
+            <div class="tool-card">
+                <h2>D-Day Calculator</h2>
+                <p>Calculate the remaining days until your special day, or see how many days have passed.</p>
+                <a href="dday.html" class="test-button">Go to Calculator</a>
             </div>
-
-            <!-- Affiliate Inquiry Form Section -->
-            <div class="container form-container">
-                <h1>제휴 문의</h1>
-                <form id="contact-form" action="https://formspree.io/f/xvzbgejq" method="POST">
-                    <p>
-                        <label for="name">이름:</label>
-                        <input type="text" id="name" name="name" required>
-                    </p>
-                    <p>
-                        <label for="email">이메일:</label>
-                        <input type="email" id="email" name="email" required>
-                    </p>
-                    <p>
-                        <label for="company">회사명 (선택 사항):</label>
-                        <input type="text" id="company" name="company">
-                    </p>
-                    <p>
-                        <label for="message">문의 내용:</label>
-                        <textarea id="message" name="message" rows="5" required></textarea>
-                    </p>
-                    <p>
-                        <button type="submit">문의 제출</button>
-                    </p>
-                    <p id="form-status" class="hidden"></p>
-                </form>
+            <div class="tool-card">
+                <h2>Animal Face Test</h2>
+                <p>Find out if you look more like a cat or a dog with our fun AI-powered test.</p>
+                <a href="animal_test.html" class="test-button">Go to Test</a>
             </div>
-
-            <!-- Link to Animal Test Page -->
-            <div class="container animal-test-link-container">
-                <h2>동물상 테스트</h2>
-                <p>웹캠을 사용하여 당신이 강아지상인지 고양이상인지 테스트해보세요!</p>
-                <a href="animal_test.html" class="test-button">테스트 시작하기</a>
+            <div class="tool-card">
+                <h2>Contact Us</h2>
+                <p>Have questions, suggestions, or partnership inquiries? Get in touch with us.</p>
+                <a href="contact.html" class="test-button">Contact Page</a>
             </div>
-        </div>
+        </section>
+    </main>
 
-        <div class="sidebar-comments">
-            <div id="disqus_thread"></div>
-        </div>
-    </div>
+    <footer class="site-footer">
+        <p>&copy; 2024 Jocoding's Web Tools. All Rights Reserved.</p>
+    </footer>
 
-    <script>
-        var disqus_config = function () {
-        this.page.url = "https://jeonyeonmori-web.github.io/jocoding_week1/";  // Actual GitHub Pages URL
-        this.page.identifier = "index.html"; // Unique identifier for the page
-        };
-        (function() { // DON'T EDIT BELOW THIS LINE
-        var d = document, s = d.createElement('script');
-        s.src = 'https://jokoding1ju.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
     <script src="main.js"></script>
 </body>
 </html>

@@ -3,31 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>동물상 테스트</title>
+    <title>Animal Face Test - Jocoding's Web Tools</title>
+    <meta name="description" content="Find out if you look more like a cat or a dog with our fun AI-powered test. Upload a photo and see the results.">
+    <link rel="stylesheet" href="style.css">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3480769851044573" crossorigin="anonymous"></script>
     <meta name="google-adsense-account" content="ca-pub-3480769851044573">
-    <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest/dist/tf.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@latest/dist/teachablemachine-image.min.js"></script>
 </head>
 <body>
-    <div class="theme-toggle-container">
-        <a href="index.html" class="nav-button">D-Day 계산기</a>
+    <header class="site-header">
+        <nav class="navigation">
+            <a href="index.html" class="nav-logo">Jocoding's Tools</a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dday.html">D-Day Calculator</a></li>
+                <li><a href="animal_test.html">Animal Face Test</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
         <button id="theme-toggle">🌙</button>
-    </div>
+    </header>
 
-    <div class="container animal-test-container">
-        <h1>강아지/고양이상 테스트 (이미지 업로드)</h1>
-        <p>사진 파일을 업로드하여 당신이 강아지상인지 고양이상인지 확인해보세요!</p>
+    <main class="page-wrapper-single">
+        <div class="container animal-test-container">
+            <h1>강아지/고양이상 테스트 (이미지 업로드)</h1>
+            <p>사진 파일을 업로드하여 당신이 강아지상인지 고양이상인지 확인해보세요!</p>
 
-        <input type="file" id="imageUpload" accept="image/*">
-        <div id="image-display-container">
-            <img id="uploadedImage" src="#" alt="업로드된 이미지" style="display:none;">
-            <canvas id="imageCanvas" style="display:none;"></canvas>
+            <input type="file" id="imageUpload" accept="image/*">
+            <div id="image-display-container">
+                <img id="uploadedImage" src="#" alt="업로드된 이미지" style="display:none;">
+                <canvas id="imageCanvas" style="display:none;"></canvas>
+            </div>
+            <button type="button" id="predictButton" class="predict-button" disabled>예측하기</button>
+            <div id="label-container"></div>
         </div>
-        <button type="button" id="predictButton" class="predict-button" disabled>예측하기</button>
-        <div id="label-container"></div>
-    </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2024 Jocoding's Web Tools. All Rights Reserved.</p>
+    </footer>
 
     <script type="text/javascript">
         const URL = "https://teachablemachine.withgoogle.com/models/wyspbsAN1/";
@@ -40,7 +55,7 @@
         const labelContainer = document.getElementById('label-container');
         const ctx = imageCanvas.getContext('2d');
 
-        async function init() {
+        async function initModel() {
             const modelURL = URL + "model.json";
             const metadataURL = URL + "metadata.json";
 
@@ -114,7 +129,9 @@
             }
         }
 
-        document.addEventListener('DOMContentLoaded', init);
+        // Initialize the model when the DOM is loaded.
+        document.addEventListener('DOMContentLoaded', initModel);
     </script>
+     <script src="main.js"></script>
 </body>
 </html>

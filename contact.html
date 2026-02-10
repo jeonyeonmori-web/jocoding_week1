@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Jocoding's Web Tools</title>
+    <meta name="description" content="Contact us for questions, suggestions, or partnership inquiries.">
+    <link rel="stylesheet" href="style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3480769851044573" crossorigin="anonymous"></script>
+    <meta name="google-adsense-account" content="ca-pub-3480769851044573">
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navigation">
+            <a href="index.html" class="nav-logo">Jocoding's Tools</a>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="dday.html">D-Day Calculator</a></li>
+                <li><a href="animal_test.html">Animal Face Test</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+        <button id="theme-toggle">🌙</button>
+    </header>
+
+    <main class="page-wrapper-single">
+        <div class="container form-container">
+            <h1>제휴 문의</h1>
+            <p>질문, 제안, 파트너십 문의가 있으시면 아래 양식을 통해 연락주세요.</p>
+            <form id="contact-form" action="https://formspree.io/f/xvzbgejq" method="POST">
+                <p>
+                    <label for="name">이름:</label>
+                    <input type="text" id="name" name="name" required>
+                </p>
+                <p>
+                    <label for="email">이메일:</label>
+                    <input type="email" id="email" name="email" required>
+                </p>
+                <p>
+                    <label for="company">회사명 (선택 사항):</label>
+                    <input type="text" id="company" name="company">
+                </p>
+                <p>
+                    <label for="message">문의 내용:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </p>
+                <p>
+                    <button type="submit">문의 제출</button>
+                </p>
+                <p id="form-status" class="hidden"></p>
+            </form>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2024 Jocoding's Web Tools. All Rights Reserved.</p>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
