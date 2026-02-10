@@ -50,6 +50,9 @@ body.dark-mode #dday-display {
     top: 20px;
     right: 20px;
     z-index: 1000;
+    display: flex; /* Use flexbox for button alignment */
+    align-items: center; /* Vertically align items */
+    gap: 10px; /* Space between buttons */
 }
 
 #theme-toggle {
@@ -75,6 +78,32 @@ body.dark-mode #theme-toggle {
 
 body.dark-mode #theme-toggle:hover {
     background-color: #a3f7bf;
+}
+
+.nav-button {
+    background-color: #6c757d; /* Grey button */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1.0em;
+    cursor: pointer;
+    text-decoration: none; /* Remove underline for links */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+.nav-button:hover {
+    background-color: #5a6268; /* Darker grey on hover */
+}
+
+body.dark-mode .nav-button {
+    background-color: #adb5bd;
+    color: #282c34;
+}
+
+body.dark-mode .nav-button:hover {
+    background-color: #93989f;
 }
 
 
@@ -161,9 +190,9 @@ input[type="date"]:focus {
     color: #555;
 }
 
-.form-container input[type="text"],
-.form-container input[type="email"],
-.form-container textarea {
+input[type="text"],
+input[type="email"],
+textarea {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
