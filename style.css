@@ -7,7 +7,76 @@ body {
     background-color: #e6ffe6; /* Light green background */
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for theme change */
+    flex-direction: column; /* Allow content to stack vertically */
 }
+
+/* Dark Mode styles */
+body.dark-mode {
+    background-color: #282c34; /* Dark background */
+    color: #e0e0e0; /* Light text */
+}
+
+body.dark-mode .container {
+    background-color: #3a3f4a; /* Darker container */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Darker shadow */
+}
+
+body.dark-mode h1 {
+    color: #72ef9e; /* Lighter green for dark mode heading */
+}
+
+body.dark-mode label {
+    color: #88d49e; /* Lighter green for dark mode label */
+}
+
+body.dark-mode input[type="date"] {
+    background-color: #4a4f59; /* Darker input background */
+    color: #e0e0e0;
+    border-color: #72ef9e; /* Lighter green border */
+}
+
+body.dark-mode input[type="date"]:focus {
+    border-color: #a3f7bf; /* Even lighter green on focus */
+}
+
+body.dark-mode #dday-display {
+    color: #a3f7bf; /* Lighter green for dark mode D-Day number */
+}
+
+/* Theme Toggle Button Styles */
+.theme-toggle-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+#theme-toggle {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease;
+}
+
+#theme-toggle:hover {
+    background-color: #45a049;
+}
+
+body.dark-mode #theme-toggle {
+    background-color: #72ef9e;
+    color: #282c34;
+}
+
+body.dark-mode #theme-toggle:hover {
+    background-color: #a3f7bf;
+}
+
 
 .container {
     background-color: #ffffff;
@@ -17,6 +86,7 @@ body {
     text-align: center;
     width: 90%;
     max-width: 500px;
+    margin-bottom: 20px; /* Add margin to separate containers */
 }
 
 h1 {
@@ -47,7 +117,7 @@ input[type="date"] {
     color: #333;
     width: calc(100% - 34px); /* Adjust for padding and border */
     max-width: 250px;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
 input[type="date"]:focus {
@@ -64,4 +134,86 @@ input[type="date"]:focus {
     color: #008000; /* Dark green for the D-Day number */
     display: block; /* Ensures it takes full width */
     min-height: 1.5em; /* Prevent layout shift before number appears */
+}
+
+/* Form-specific styles */
+.form-container {
+    padding: 30px 40px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+.form-container h1 {
+    color: #3f51b5; /* Deep purple */
+    margin-bottom: 25px;
+    font-size: 2em;
+}
+
+.form-container form p {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.form-container label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+    margin-top: 5px;
+}
+
+.form-container input[type="text"]:focus,
+.form-container input[type="email"]:focus,
+.form-container textarea:focus {
+    border-color: #3f51b5;
+    outline: none;
+    box-shadow: 0 0 5px rgba(63, 81, 181, 0.3);
+}
+
+.form-container button[type="submit"] {
+    background-color: #3f51b5; /* Deep purple */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+}
+
+.form-container button[type="submit"]:hover {
+    background-color: #303f9f; /* Darker purple on hover */
+}
+
+.hidden {
+    display: none;
+}
+
+#form-status {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+#form-status.success {
+    background-color: #e8f5e9; /* Light green */
+    color: #4CAF50; /* Green */
+}
+
+#form-status.error {
+    background-color: #ffebee; /* Light red */
+    color: #f44336; /* Red */
 }
